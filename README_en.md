@@ -1,6 +1,6 @@
 # Hash-Checker
 
-简体中文|English
+[简体中文](https://github.com/Cheng-MaoMao/Sennpai/blob/main/README.md)|[English](https://github.com/Cheng-MaoMao/Hash-Checker/blob/main/README_en.md)
 
 # Software Introduction
 
@@ -18,3 +18,4 @@ The graphical interface is implemented using Java Swing
 Use SwingWorker for asynchronous computation
 
 # Software screenshot
+![image](https://github.com/user-attachments/assets/273828c1-0c3c-4157-b7dd-ae5157633620)
