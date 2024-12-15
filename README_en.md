@@ -1,3 +1,20 @@
 # Hash-Checker
 
-Support all verification methods from MD5 to SHA-3
+简体中文|English
+
+# Software Introduction
+
+Support from MD5 to SHA-3 hash verification calculation and comparison
+
+Multiple files and folders can be selected at the same time
+
+* Support selecting single/multiple files or folders
+* If a folder is selected, all files in the folder will be processed recursively
+
+# Technique used
+
+The graphical interface is implemented using Java Swing
+
+Use SwingWorker for asynchronous computation
+
+# Software screenshot

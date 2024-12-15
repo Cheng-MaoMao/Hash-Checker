@@ -1,2 +1,20 @@
 # Hash-Checker
-Support all verification methods from MD5 to SHA-3
+
+简体中文|English
+
+# **软件介绍**
+
+支持从MD5到SHA-3的哈希校验的计算和对比
+
+可以同时选择多个文件和文件夹
+
+* 支持选择单/多个文件或文件夹
+* 如果选择文件夹，会递归处理文件夹下的所有文件
+
+# 使用的技术
+
+图形界面使用Java Swing实现
+
+使用SwingWorker进行异步计算
+
+# 软件截图
