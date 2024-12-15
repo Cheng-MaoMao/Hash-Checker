@@ -11,6 +11,10 @@ Multiple files and folders can be selected at the same time
 * Support selecting single/multiple files or folders
 * If a folder is selected, all files in the folder will be processed recursively
 
+## How it works
+
+Run App.java directly
+
 # Technique used
 
 The graphical interface is implemented using Java Swing
