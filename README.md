@@ -18,4 +18,4 @@
 使用SwingWorker进行异步计算
 
 # 软件截图
-https://github.com/Cheng-MaoMao/Hash-Checker/blob/main/resources/image/1734284617558.png
+resources/image/1734284617558.png
