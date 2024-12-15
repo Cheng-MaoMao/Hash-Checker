@@ -1,6 +1,6 @@
 # Hash-Checker
 
-简体中文|English
+[简体中文](https://github.com/Cheng-MaoMao/Sennpai/blob/main/README.md)|[English](https://github.com/Cheng-MaoMao/Hash-Checker/blob/main/README_en.md)
 
 # **软件介绍**
 
@@ -18,3 +18,4 @@
 使用SwingWorker进行异步计算
 
 # 软件截图
+https://github.com/Cheng-MaoMao/Hash-Checker/blob/main/resources/image/1734284617558.png
