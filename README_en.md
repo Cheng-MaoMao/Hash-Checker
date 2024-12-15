@@ -18,7 +18,6 @@ The graphical interface is implemented using Java Swing
 Use SwingWorker for asynchronous computation
 
 ## Project Map
-
+![image](https://github.com/user-attachments/assets/94a4885f-3094-4611-b47b-0fff3dfc98ff)
 # Software screenshot
-
 ![image](https://github.com/user-attachments/assets/273828c1-0c3c-4157-b7dd-ae5157633620)
