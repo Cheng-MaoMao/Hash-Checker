@@ -1,6 +1,6 @@
 # Hash-Checker
 
-[简体中文](https://github.com/Cheng-MaoMao/Sennpai/blob/main/README.md)|[English](https://github.com/Cheng-MaoMao/Hash-Checker/blob/main/README_en.md)
+**简体中文**|[English](https://github.com/Cheng-MaoMao/Hash-Checker/blob/main/README_en.md)
 
 # **软件介绍**
 
