@@ -19,6 +19,7 @@
 使用SwingWorker进行异步计算
 
 ## 项目地图
+![image](https://github.com/user-attachments/assets/ec231217-f31e-4943-b20f-5223ea4973c6)
 
 # 软件截图
 
