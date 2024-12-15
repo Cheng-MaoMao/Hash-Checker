@@ -77,7 +77,11 @@ public class UIController {
 
         resultPanel.getResultArea().setText("");
         calculator.clearChecksums();
-        String algorithm = (String) filePanel.getAlgorithmCombo().getSelectedItem();
+        HashAlgorithm algorithm = (HashAlgorithm) filePanel.getAlgorithmCombo().getSelectedItem();
+
+        // 禁用计算按钮，启用取消按钮
+        filePanel.getCalculateButton().setEnabled(false);
+        filePanel.getCancelButton().setEnabled(true);
 
         SwingWorker<Void, ProgressUpdate> worker = new SwingWorker<>() {
             @Override
@@ -87,14 +91,21 @@ public class UIController {
 
                 for (File file : filePanel.getSelectedFiles()) {
                     currentFile++;
-                    String checksum = calculator.calculateChecksum(file, algorithm);
-                    calculator.getFileChecksums().put(file.getPath(), checksum);
+                    try {
+                        String checksum = calculator.calculateChecksum(file, algorithm);
+                        calculator.getFileChecksums().put(file.getPath(), checksum);
 
-                    int progress = (currentFile * 100) / totalFiles;
-                    publish(new ProgressUpdate(
-                            progress,
-                            file.getName(),
-                            String.format("%s: %s", algorithm, checksum)));
+                        int progress = (currentFile * 100) / totalFiles;
+                        publish(new ProgressUpdate(
+                                progress,
+                                file.getName(),
+                                String.format("%s: %s", algorithm, checksum)));
+                    } catch (Exception e) {
+                        publish(new ProgressUpdate(
+                                (currentFile * 100) / totalFiles,
+                                file.getName(),
+                                "Error: " + e.getMessage()));
+                    }
                 }
                 return null;
             }
@@ -113,9 +124,20 @@ public class UIController {
             @Override
             protected void done() {
                 progressDialog.setVisible(false);
+                filePanel.getCalculateButton().setEnabled(true);
+                filePanel.getCancelButton().setEnabled(false);
                 JOptionPane.showMessageDialog(null, "校验值计算完成！");
             }
         };
+
+        // 设置取消按钮的动作
+        filePanel.getCancelButton().addActionListener(e -> {
+            calculator.cancelCalculation();
+            worker.cancel(true);
+            progressDialog.setVisible(false);
+            filePanel.getCalculateButton().setEnabled(true);
+            filePanel.getCancelButton().setEnabled(false);
+        });
 
         worker.execute();
         progressBar.setValue(0);

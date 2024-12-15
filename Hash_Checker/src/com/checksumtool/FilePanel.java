@@ -5,56 +5,69 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.File;
+import java.util.Vector;
 
 public class FilePanel extends JPanel {
-    // 定义算法下拉框
-    private final JComboBox<String> algorithmCombo;
-    // 定义添加文件按钮
+    // 哈希算法选择框
+    private final JComboBox<HashAlgorithm> algorithmCombo;
+    // 添加文件按钮
     private final JButton addFilesButton;
-    // 定义计算校验值按钮
+    // 计算校验值按钮
     private final JButton calculateButton;
-    // 定义对比校验值按钮
+    // 对比校验值按钮
     private final JButton compareButton;
-    // 定义清除按钮
+    // 清除按钮
     private final JButton clearButton;
-    // 定义已选择的文件列表
+    // 取消计算按钮
+    private final JButton cancelButton;
+    // 已选择的文件列表
     private final List<File> selectedFiles;
 
     public FilePanel() {
-        // 设置布局为左对齐
         setLayout(new FlowLayout(FlowLayout.LEFT));
-        // 初始化已选择的文件列表
         selectedFiles = new ArrayList<>();
 
-        // 初始化算法下拉框
-        algorithmCombo = new JComboBox<>(new String[] { "MD5", "SHA-256" });
-        // 初始化添加文件按钮
-        addFilesButton = new JButton("添加文件");
-        // 初始化计算校验值按钮
-        calculateButton = new JButton("计算校验值");
-        // 初始化对比校验值按钮
-        compareButton = new JButton("对比校验值");
-        // 初始化清除按钮
-        clearButton = new JButton("清除");
+        // 获取可用的哈希算法
+        Vector<HashAlgorithm> availableAlgorithms = new Vector<>();
+        for (HashAlgorithm algorithm : HashAlgorithm.values()) {
+            if (ChecksumCalculator.isAlgorithmAvailable(algorithm)) {
+                availableAlgorithms.add(algorithm);
+            }
+        }
 
-        // 初始化UI
+        algorithmCombo = new JComboBox<>(availableAlgorithms);
+        algorithmCombo.setPreferredSize(new Dimension(150, 25));
+
+        addFilesButton = new JButton("添加文件");
+        calculateButton = new JButton("计算校验值");
+        compareButton = new JButton("对比校验值");
+        clearButton = new JButton("清除");
+        cancelButton = new JButton("取消计算");
+        cancelButton.setEnabled(false);
+
         initializeUI();
     }
 
-    // 初始化UI
     private void initializeUI() {
-        // 添加标签
-        add(new JLabel("选择算法："));
-        // 添加算法下拉框
-        add(algorithmCombo);
-        add(addFilesButton);
-        add(calculateButton);
-        add(compareButton);
-        add(clearButton);
+        // 创建算法选择面板
+        JPanel algorithmPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        algorithmPanel.add(new JLabel("选择算法："));
+        algorithmPanel.add(algorithmCombo);
+
+        // 创建按钮面板
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        buttonPanel.add(addFilesButton);
+        buttonPanel.add(calculateButton);
+        buttonPanel.add(compareButton);
+        buttonPanel.add(clearButton);
+        buttonPanel.add(cancelButton);
+
+        // 将面板添加到主面板
+        add(algorithmPanel);
+        add(buttonPanel);
     }
 
-    // Getter
-    public JComboBox<String> getAlgorithmCombo() {
+    public JComboBox<HashAlgorithm> getAlgorithmCombo() {
         return algorithmCombo;
     }
 
@@ -72,6 +85,10 @@ public class FilePanel extends JPanel {
 
     public JButton getClearButton() {
         return clearButton;
+    }
+
+    public JButton getCancelButton() {
+        return cancelButton;
     }
 
     public List<File> getSelectedFiles() {
