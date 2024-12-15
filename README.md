@@ -18,4 +18,4 @@
 使用SwingWorker进行异步计算
 
 # 软件截图
-resources/image/1734284617558.png
+![image](https://github.com/user-attachments/assets/273828c1-0c3c-4157-b7dd-ae5157633620)
